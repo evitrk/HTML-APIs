@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Media</title>
+    <style>
+        #play,
+        #pause {
+            background-origin: padding-box;
+            padding: 10px;
+            background-color: rgb(192, 90, 192);
+        }
+        body{
+                background-color: white;
+                transition: all 1000ms ease; 
+                /* background-color: black; */
+            }
+    </style>
+</head>
+
+
+
+<body>
+
+    <!-- add a video -->
+    <video muted controls src=" http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"></video><br>
+
+
+    <!-- declare buttons -->
+    <button id="play">Play</button>
+    <button id="pause">Pause</button>
+
+    <div id="ct">Bunny</div>
+
+    <script>
+
+        const video = document.querySelector("video");
+        const playBtn = document.querySelector("#play");
+        const pauseBtn = document.querySelector("#pause");
+        const body = document.querySelector("body");
+        const sec = document.querySelector("#ct");
+
+        function playVideo() {
+            video.play();
+        }
+        playBtn.addEventListener("click", playVideo);
+
+
+        function pauseVideo() {
+            video.pause();
+        }
+        pauseBtn.addEventListener("click", pauseVideo);
+
+
+        video.addEventListener("play", handlePlayEvent);
+        function handlePlayEvent() {
+            console.log("play event");
+            body.style.backgroundColor = "pink";
+        }
+
+        video.addEventListener("pause", handlePauseEvent);
+        function handlePauseEvent() {
+            console.log("pause event");
+            body.style.backgroundColor = "white";
+        }
+
+        console.log(sec);
+
+        function handleTimeUpdate() {
+            div.innerHTML = "Current Time: " + video.currentTime;
+        }
+        const div = document.querySelector("#ct");
+        video.addEventListener("timeupdate", handleTimeUpdate);
+
+    </script>
+</body>
+
+</html>

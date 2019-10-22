@@ -1,0 +1,75 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Media API</title>
+        <style>
+            body{
+                background-color: white;
+                transition: all 1000ms ease;
+                /* background-color: black; */
+            }
+        </style>
+    </head>
+    <body>
+        
+        <video width="400"  loop muted controls src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"></video>
+        <br>
+        <button id="play">Play</button>
+        <button id="pause">Pause</button><br>
+
+        <audio controls src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Austria.ogg"></audio>
+
+        <div id="ct">fat bunny</div>
+
+    <script>
+        const video = document.querySelector("video");
+
+        const playBtn= document.querySelector("#play");
+
+        const pauseBtn= document.querySelector("#pause");
+
+
+        function playVideo(){
+            video.play();
+        }
+        playBtn.addEventListener("click",playVideo);
+
+        function pauseVideo(){
+            video.pause();
+        }
+        pauseBtn.addEventListener("click",pauseVideo);
+
+        video.addEventListener("play",handlePlayEvent);
+
+        const body = document.querySelector("body");
+        function handlePlayEvent(){
+            console.log("play event");
+            body.style.backgroundColor="black";
+        }
+
+        video.addEventListener("pause",handlePauseEvent);
+
+        
+        function handlePauseEvent(){
+            console.log("pause event");
+            body.style.backgroundColor="white";
+        }
+
+        const sec = document.querySelector("#ct");
+        console.log(sec);
+
+
+        function handleTimeUpdate(){
+            div.innerHTML="Current Time: "+video.currentTime;
+        }
+        const div = document.querySelector("#ct");
+        video.addEventListener("timeupdate",handleTimeUpdate);
+
+
+        // setTimeout(begin,5000);
+    </script>
+    </body>
+    </html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trello</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        .col-4 {
+            min-height: 250px;
+            border: 1px solid gray;
+
+        }
+
+        ul {
+            min-height: 240px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container border shadow mt-5">
+        <div class="row">
+            <div class="col-4 border px-0">
+                <p class="bg-dark text-white text-center">TODO</p>
+                <ul class="list-unstyled text-center">
+                    <li id="t1" draggable="true" class="bg-info text-white mb-2">Buy Coffee</li>
+                    <li id="t2" draggable="true" class="bg-info text-white mb-2">Buy Sugar</li>
+                    <li id="t3" draggable="true" class="bg-info text-white mb-2">Drink Coffee</li>
+                </ul>
+            </div>
+            <div class="col-4 px-0">
+                <p class="bg-warning text-dark text-center">IN PROGRESS</p>
+
+                <ul id="l2" class="list-unstyled text-center">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+
+            </div>
+            <div class="col-4 px-0">
+                <p class="bg-success text-white text-center">DONE</p>
+                <ul class="list-unstyled text-center">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        window.addEventListener("DOMContentLoaded", init );
+
+     function init(){
+        const task1 = document.querySelector("#t1");
+        const task2 = document.querySelector("#t2");
+        const task3 = document.querySelector("#t3");
+
+        const drop = document.querySelector("#l2");
+
+        task1.addEventListener("dragstart", dragStartHandler);
+        task2.addEventListener("dragstart", dragStartHandler);
+        task3.addEventListener("dragstart", dragStartHandler);
+
+        function dragStartHandler(e) {
+            console.log(e.target.id);
+            e.dataTransfer.setData("text/plain", e.target.id);
+
+        }
+
+
+        drop.addEventListener("drop", handleDrop);
+
+        function handleDragOver(e) {
+            e.preventDefault();
+
+        }
+        drop.addEventListener("dragover", handleDragOver);
+
+        function handleDrop(e) {
+            const id = e.dataTransfer.getData("text/plain");
+            const li = document.querySelector("#" + id);
+            console.log(li);
+            e.target.appendChild(li);
+        }
+    }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Video Prograss Bar</title>
+    <style>
+        p{
+            font-size: 1.4rem;
+        }
+        #progress,#bar{
+            width: 700px;
+            height: 30px;
+            background-color: gray;
+        }
+        #bar{
+            background-color: yellowgreen;
+            width: 250px;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    
+    <video  width="700" controls src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"></video>
+
+    <div id="progress">
+        <div id="bar"></div>
+    </div>
+
+
+    <p id="percentage">0%</p>
+
+
+</body>
+</html>
